@@ -109,3 +109,29 @@ function formatTime() {
 
 current_date.innerHTML = formatDate();
 current_time.innerHTML = formatTime();
+
+function convertToFahr() {
+  event.preventDefault();
+  let a = 1.8;
+  let b = 32;
+  let fahrenheitdata = celsius * a + b;
+  let currentDegreeC = document.querySelector("#current_degrees");
+  currentDegreeC.innerHTML = Math.round(fahrenheitdata);
+  convertCelsius.classList.remove("active");
+  convertFahrenheit.classList.add("active");
+}
+
+function convertToCels() {
+  event.preventDefault();
+  let currentDegreeF = document.querySelector("#current_degrees");
+  currentDegreeF.innerHTML = Math.round(celsius);
+
+  convertFahrenheit.classList.remove("active");
+  convertCelsius.classList.add("active");
+}
+
+let convertFahrenheit = document.querySelector("#fahrenheit");
+convertFahrenheit.addEventListener("click", convertToFahr);
+
+let convertCelsius = document.querySelector("#celsius");
+convertCelsius.addEventListener("click", convertToCels);
