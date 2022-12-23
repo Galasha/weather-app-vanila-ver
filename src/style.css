@@ -136,3 +136,35 @@ ul {
   position: relative;
   top: -20px;
 }
+
+.float-left {
+  position: relative;
+  color: #1d1ce5;
+  text-align: center;
+  font-size: 32px;
+  left: 80px;
+  width: 300px;
+}
+.float-left .active {
+  color: #1d1ce5;
+  cursor: default;
+  text-decoration: none;
+}
+
+.float-left .active:hover {
+  text-decoration: none;
+}
+
+p {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  text-align: center;
+  color: #1d1ce5;
+  opacity: 0.8;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  background-color: #f1f6f5;
+  max-width: 300px;
+}
