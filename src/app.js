@@ -5,6 +5,28 @@ function displayWeather() {
   document.getElementById("current_weather").style.display = "block";
 }
 
+function currentTemperature(response) {
+  let newCityName = response.data.city;
+  let CountryName = response.data.country;
+  let newCity = document.querySelector("h2");
+  newCity.innerHTML = `${newCityName}, ${CountryName}`;
+  let currentTemperatureIs = Math.round(response.data.temperature.current);
+  let updateTemperature = document.querySelector("#current_degrees");
+  updateTemperature.innerHTML = currentTemperatureIs;
+  let currentHumidity = response.data.temperature.humidity;
+  let updateHumidity = document.querySelector("#curr_humidity");
+  updateHumidity.innerHTML = currentHumidity;
+  let currentWind = response.data.wind.speed;
+  let updateWind = document.querySelector("#curr_wind");
+  updateWind.innerHTML = currentWind;
+  let currentWeather = response.data.condition.description;
+  let updateWeather = document.querySelector("#curr_weather");
+  updateWeather.innerHTML = currentWeather;
+  let newIcon = document.querySelector("#current_icon_weather");
+  newIcon.src = response.data.condition.icon_url;
+  celsius = response.data.temperature.current;
+}
+
 function searchCity(event) {
   event.preventDefault();
   let searchCityName = document.querySelector("#search_city_name");
