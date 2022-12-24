@@ -25,9 +25,9 @@ h1 {
 }
 
 #current_weather {
-  /*display: none;*/
+  display: none;
   background-color: #fdf0e0;
-  max-width: 830px;
+  max-width: 760px;
   position: relative;
   left: 140px;
   border-radius: 4px;
