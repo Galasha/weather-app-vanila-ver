@@ -7,6 +7,7 @@ h1 {
   text-align: center;
   font-size: 400;
 }
+
 .img_back {
   position: absolute;
   opacity: 0.8;
@@ -24,7 +25,7 @@ h1 {
 }
 
 #current_weather {
-  display: none;
+  /*display: none;*/
   background-color: #fdf0e0;
   max-width: 830px;
   position: relative;
@@ -153,6 +154,23 @@ ul {
 
 .float-left .active:hover {
   text-decoration: none;
+}
+
+#forecast_day {
+  font-size: 16px;
+}
+.weather_forecast {
+  margin-top: 20px;
+  text-align: center;
+  color: #1d1ce5;
+}
+
+#forecast_temperature {
+  font-size: 13px;
+}
+
+#forecast_temperature_min {
+  opacity: 0.7;
 }
 
 p {
