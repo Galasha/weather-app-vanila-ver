@@ -5,6 +5,41 @@ function displayWeather() {
   document.getElementById("current_weather").style.display = "block";
 }
 
+function displayForecast(response) {
+  let forecastdata = response.data.daily;
+  console.log(forecastdata);
+  let forecastElement = document.querySelector("weather_forecast");
+  let forecastHTML = `<div class="row">`;
+  forecastdata.forEach(function(forecastDay, index) {
+    if (index > 0 && index < 3) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+      <div id="forecast_day"> Saturday</div>
+      <div id="forecast_icon">
+        <img
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png"
+          id="weather_forecast_icon"
+        />{" "}
+      </div>
+      <div class="forecast_temperature">
+        <span id="forecast_temperature_max">12</span>
+        <span id="forecast_temperature_min">15</span>
+      </div>
+    `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function currentTemperature(response) {
   let newCityName = response.data.city;
   let CountryName = response.data.country;
@@ -25,6 +60,7 @@ function currentTemperature(response) {
   let newIcon = document.querySelector("#current_icon_weather");
   newIcon.src = response.data.condition.icon_url;
   celsius = response.data.temperature.current;
+  getForecast(response.data.coordinates);
 }
 
 function searchCity(event) {
@@ -35,6 +71,7 @@ function searchCity(event) {
   if (city !== null) {
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeather);
+    axios.get(apiUrl).then(getForecast);
     axios.get(apiUrl).then(currentTemperature);
   } else {
     currentCityWeather();
